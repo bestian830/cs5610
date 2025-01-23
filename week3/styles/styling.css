@@ -36,3 +36,7 @@ h2::first-letter {
 a[href*='github']{
     content: url(../image/GitHub-Mark-32px.png);
 }
+
+Header a:last-child {
+    margin-left: 20px;
+}
