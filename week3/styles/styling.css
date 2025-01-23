@@ -33,7 +33,7 @@ h2::first-letter {
     font-size: 3rem;
 }
 
-a[href*='github']{
+a[href*='github']::after{
     content: url(../image/GitHub-Mark-32px.png);
 }
 
