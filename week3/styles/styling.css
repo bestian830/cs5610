@@ -44,3 +44,7 @@ Header a:last-child {
 .education .education-list > li:first-child {
     font-style: italic;
 }
+
+.skills li{
+    list-style-type: none;
+}
