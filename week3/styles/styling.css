@@ -48,3 +48,7 @@ Header a:last-child {
 .skills li{
     list-style-type: none;
 }
+
+.experience li ~ li {
+    color: darkgreen;
+}
