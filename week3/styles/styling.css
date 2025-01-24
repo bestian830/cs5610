@@ -52,3 +52,7 @@ Header a:last-child {
 .experience li ~ li {
     color: darkgreen;
 }
+
+a[href$=".edu"]::before {
+    content: url(../image/link.png);
+}
