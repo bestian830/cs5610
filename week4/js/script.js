@@ -29,6 +29,7 @@ function findStudentsInVancouver ()
     {
         if (students[i].location === "Vancouver")
         {
+            console.log(`${students[i].name} lives in ${students[i].location}`);
             vancouverStudents.push(students[i]);
         }
     }
