@@ -24,14 +24,16 @@ let students = [
 
 
 function findStudentsInVancouver () 
-{
+{ let vancouverStudents = [];
     for (let i = 0; i < students.length; i++)
     {
         if (students[i].location === "Vancouver")
         {
-            console.log(students[i].name);
+            vancouverStudents.push(students[i]);
         }
     }
+    return vancouverStudents;
 }
 
-findStudentsInVancouver();
+const returnedArray = findStudentsInVancouver();
+console.log(returnedArray);
