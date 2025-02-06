@@ -51,18 +51,30 @@
 
 // changeListMarker();
 
-const button = document.querySelector("#updateImage");
-function changeButtonText() {
-    // will be called when user clickes the button
-    // change the text to clicked if it says "Click me"
-    if (button.innerText === "Click Me!"){
-        button.innerText = "Clicked";
-    }
-    else if (button.innerText === "Clicked") {
-        button.innerText = "Click Me!";
-    }
-    // if I wnat this to be called only one time
-    // button.removeEventListener("click", changeButtonText);
+// const button = document.querySelector("#updateImage");
+// function changeButtonText() {
+//     // will be called when user clickes the button
+//     // change the text to clicked if it says "Click me"
+//     if (button.innerText === "Click Me!"){
+//         button.innerText = "Clicked";
+//     }
+//     else if (button.innerText === "Clicked") {
+//         button.innerText = "Click Me!";
+//     }
+//     // if I wnat this to be called only one time
+//     // button.removeEventListener("click", changeButtonText);
+// }
+
+// button.addEventListener("click", changeButtonText);
+
+const buttonContainer = document.querySelector(".buttonContainer");
+
+function changeButtonBGcolor(event) {
+    //which button had the mouse over it?
+    console.log(event.target.innerText);
+    //change the background color of the button based on its text
+    event.target.style.backgroundColor = event.target.innerText;
 }
 
-button.addEventListener("click", changeButtonText);
+//setting the listener on the parent of the buttons
+buttonContainer.addEventListener("mouseover", changeButtonBGcolor); 
