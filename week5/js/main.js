@@ -22,31 +22,47 @@
 // const result = calculateArea();
 // resultP.innerText += ": "+result;
 
-let shoppingItems = ["bread", "cheese", "green pepper"];
-//ur class = "shopping"
-//loop in the array
-    //create an li
-    //update the text of the li with the array item
-    //call append/appendChild on ul and pass the created li
-const shoppings = document.querySelector(".shopping");
+// let shoppingItems = ["bread", "cheese", "green pepper"];
+// //ur class = "shopping"
+// //loop in the array
+//     //create an li
+//     //update the text of the li with the array item
+//     //call append/appendChild on ul and pass the created li
+// const shoppings = document.querySelector(".shopping");
 
-function populateShoppingList(shoppingListItems) {
-    console.log(shoppingListItems);
-    for (let i = 0; i < shoppingListItems.length; i++) {
-        const li = document.createElement("li");
-        li.innerText = shoppingListItems[i];
-        shoppings.appendChild(li);
+// function populateShoppingList(shoppingListItems) {
+//     console.log(shoppingListItems);
+//     for (let i = 0; i < shoppingListItems.length; i++) {
+//         const li = document.createElement("li");
+//         li.innerText = shoppingListItems[i];
+//         shoppings.appendChild(li);
+//     }
+// }
+// populateShoppingList(shoppingItems);
+// // shoppingItems.forEach(item => {
+// //     const li = document.createElement("li");
+// //     li.innerText = item;
+// //     shoppings.appendChild(li);
+// // })
+
+// function changeListMarker() {
+//     shoppings.setAttribute("class", "squareList");
+// }
+
+// changeListMarker();
+
+const button = document.querySelector("#updateImage");
+function changeButtonText() {
+    // will be called when user clickes the button
+    // change the text to clicked if it says "Click me"
+    if (button.innerText === "Click Me!"){
+        button.innerText = "Clicked";
     }
-}
-populateShoppingList(shoppingItems);
-// shoppingItems.forEach(item => {
-//     const li = document.createElement("li");
-//     li.innerText = item;
-//     shoppings.appendChild(li);
-// })
-
-function changeListMarker() {
-    shoppings.setAttribute("class", "squareList");
+    else if (button.innerText === "Clicked") {
+        button.innerText = "Click Me!";
+    }
+    // if I wnat this to be called only one time
+    // button.removeEventListener("click", changeButtonText);
 }
 
-changeListMarker();
+button.addEventListener("click", changeButtonText);
