@@ -28,18 +28,25 @@ let shoppingItems = ["bread", "cheese", "green pepper"];
     //create an li
     //update the text of the li with the array item
     //call append/appendChild on ul and pass the created li
-const ul = document.querySelector(".shopping");
+const shoppings = document.querySelector(".shopping");
 
-// function populateShoppingList(shoppingListItems) {
-//     console.log(shoppingListItems);
-//     for (let i = 0; i < shoppingListItems.length; i++) {
-//         const li = document.createElement("li");
-//         li.innerText = shoppingListItems[i];
-//         ul.appendChild(li);
-//     }
-// }
-shoppingItems.forEach(item => {
-    const li = document.createElement("li");
-    li.innerText = item;
-    ul.appendChild(li);
-})
+function populateShoppingList(shoppingListItems) {
+    console.log(shoppingListItems);
+    for (let i = 0; i < shoppingListItems.length; i++) {
+        const li = document.createElement("li");
+        li.innerText = shoppingListItems[i];
+        shoppings.appendChild(li);
+    }
+}
+populateShoppingList(shoppingItems);
+// shoppingItems.forEach(item => {
+//     const li = document.createElement("li");
+//     li.innerText = item;
+//     shoppings.appendChild(li);
+// })
+
+function changeListMarker() {
+    shoppings.setAttribute("class", "squareList");
+}
+
+changeListMarker();
