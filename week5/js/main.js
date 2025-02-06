@@ -70,10 +70,14 @@
 const buttonContainer = document.querySelector(".buttonContainer");
 
 function changeButtonBGcolor(event) {
+    console.log(event);
+    if (event.target.nodeName === "BUTTON") {
+        event.target.style.backgroundColor = event.target.innerText;
+    }
     //which button had the mouse over it?
-    console.log(event.target.innerText);
+    
     //change the background color of the button based on its text
-    event.target.style.backgroundColor = event.target.innerText;
+    
 }
 
 //setting the listener on the parent of the buttons
