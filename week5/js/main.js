@@ -51,21 +51,30 @@
 
 // changeListMarker();
 
-// const button = document.querySelector("#updateImage");
-// function changeButtonText() {
-//     // will be called when user clickes the button
-//     // change the text to clicked if it says "Click me"
-//     if (button.innerText === "Click Me!"){
-//         button.innerText = "Clicked";
-//     }
-//     else if (button.innerText === "Clicked") {
-//         button.innerText = "Click Me!";
-//     }
-//     // if I wnat this to be called only one time
-//     // button.removeEventListener("click", changeButtonText);
-// }
+const button = document.querySelector("#updateImage");
+// check the storage for its text
+const buttonText = localStorage.getItem("buttonText");
+console.log(buttonText);
+//update the button text with the storage value if it exits
+if (buttonText)
+{
+    button.innerText = buttonText;
+}
+function changeButtonText() {
+    // will be called when user clickes the button
+    // change the text to clicked if it says "Click me"
+    if (button.innerText === "Click Me!"){
+        button.innerText = "Clicked";
+    }
+    else if (button.innerText === "Clicked") {
+        button.innerText = "Click Me!";
+    }
+    localStorage.setItem("buttonText", button.innerText);
+    // if I wnat this to be called only one time
+    // button.removeEventListener("click", changeButtonText);
+}
 
-// button.addEventListener("click", changeButtonText);
+button.addEventListener("click", changeButtonText);
 
 const buttonContainer = document.querySelector(".buttonContainer");
 
