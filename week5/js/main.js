@@ -3,7 +3,7 @@ const resultP = document.querySelector("#result");
 
 function getNumber() {
     let radius = prompt("Enter a number for a circle radius");
-    radiusP.innerText += radius;
+    radiusP.innerText += " "+radius;
     return radius;
 }
 
@@ -20,4 +20,4 @@ function calculateArea() {
 }
 
 const result = calculateArea();
-resultP.innerText += result;
+resultP.innerText += ": "+result;
