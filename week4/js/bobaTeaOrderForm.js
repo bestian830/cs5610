@@ -12,21 +12,33 @@ const prices = {
 
 function calculateFinalPrice(flavor, size, toppings) {
     let basePrice = prices[flavor];
-    let toppingPrice = toppings.reduce((sum, topping) => sum + prices[topping], 0);
+    let toppingPrice = toppings.length > 0 ? toppings.reduce((sum, topping) => sum + (prices[topping] || 0), 0):0;
     let finalPrice = prices[size] * (basePrice + toppingPrice);
     return finalPrice;
 }
 
 function displayOrderSummary(order) {
+    // Get the paragraph element where the order summary should be displayed
+    let summaryParagraph = document.querySelector("#order-summary");
+
+    // Ensure toppings are displayed properly
     let toppingsList = order.toppings.length > 0 ? order.toppings.join(" ") : "None";
-    console.log(`Your have ordered a ${order.size} ${order.flavor} with these toppings: ${toppingsList}`);
-    console.log(`Total Price: $${order.finalPrice}`);
+
+    // Construct the summary text
+    let summaryText = `You have ordered a ${order.size} ${order.flavor} with these toppings: ${toppingsList}. Total Price: $${order.finalPrice}`;
+
+    // Update the paragraph with the summary
+    if (summaryParagraph) {
+        summaryParagraph.innerText = summaryText;
+    } else {
+        console.error("Error: #order-summary element not found.");
+    }
 }
 
 function placeOrder() {
     let flavor = document.querySelector("#flavor").value;
     let size = document.querySelector("#size").value;
-    let toppings = document.querySelector("#toppings").value;
+    let toppings = Array.from(document.querySelector("#toppings").selectedOptions).map(option => option.value);
 
     // Ensure user has made valid selections before proceeding
     if (!flavor || !size) {
@@ -61,8 +73,11 @@ function validateAndUpdateOrder() {
 
     // Update order summary if both dropdowns have valid selections
     if (orderSummary) {
-        orderSummary.innerText = `Selected Option: ${dropdown1.value, dropdown2.value}`;
+        orderSummary.innerText = `Selected Option: ${dropdown1.value}, ${dropdown2.value}`;
     }
 }
 
-document.querySelector("#btn").addEventListener("click", placeOrder);
+document.querySelector("#btn").addEventListener("click", function(event) {
+    event.preventDefault();
+    placeOrder();
+});
