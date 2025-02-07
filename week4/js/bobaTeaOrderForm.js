@@ -33,3 +33,20 @@ function placeOrder(flavor, size, toppings) {
     };
     displayOrderSummary(order);
 }
+
+function validateAndUpdateOrder() {
+    let dropdown1 = document.querySelector("#flavor");
+    let dropdown2 = document.querySelector("#size");
+    let orderSummary = document.querySelector("#order-summary");
+
+    if (!dropdown1.value || !dropdown2.value) {
+        alert("Please select an option from both flavor and size before proceeding.");
+        return;
+    }
+
+    // Update order summary if both dropdowns have valid selections
+    if (orderSummary) {
+        orderSummary.innerText = `Selected Option: ${dropdown1.value, dropdown2.value}`;
+    }
+    
+}
