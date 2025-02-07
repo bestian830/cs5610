@@ -63,5 +63,6 @@ function validateAndUpdateOrder() {
     if (orderSummary) {
         orderSummary.innerText = `Selected Option: ${dropdown1.value, dropdown2.value}`;
     }
-    
 }
+
+document.querySelector("#btn").addEventListener("click", placeOrder);
