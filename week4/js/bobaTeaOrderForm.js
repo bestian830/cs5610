@@ -23,14 +23,29 @@ function displayOrderSummary(order) {
     console.log(`Total Price: $${order.finalPrice}`);
 }
 
-function placeOrder(flavor, size, toppings) {
+function placeOrder() {
+    let flavor = document.querySelector("#flavor").value;
+    let size = document.querySelector("#size").value;
+    let toppings = document.querySelector("#toppings").value;
+
+    // Ensure user has made valid selections before proceeding
+    if (!flavor || !size) {
+        alert("Please select both flavor and size before placing an order.");
+        return;
+    }
+
+    // Calculate the final price
     let finalPrice = calculateFinalPrice(flavor, size, toppings);
+
+    // Create order object
     let order = {
         flavor: flavor,
         size: size,
         toppings: toppings,
         finalPrice: finalPrice
     };
+
+    // Display order summary
     displayOrderSummary(order);
 }
 
