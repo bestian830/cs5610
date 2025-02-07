@@ -14,6 +14,7 @@ function calculateFinalPrice(flavor, size, toppings) {
     let basePrice = prices[flavor];
     let toppingPrice = toppings.length > 0 ? toppings.reduce((sum, topping) => sum + (prices[topping] || 0), 0):0;
     let finalPrice = prices[size] * (basePrice + toppingPrice);
+    finalPrice = Math.round(finalPrice * 100) /100;
     return finalPrice;
 }
 
