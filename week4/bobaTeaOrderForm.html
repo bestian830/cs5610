@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/bobaTeaOrderForm.css">
+    <script defer src="js/bobaTeaOrderForm.js"></script>
 </head>
 <body>
     <div class="order-form">
@@ -38,11 +39,15 @@
                 </select>
             
                 <!-- Submit Button -->
-                <button type="submit">Place Order</button>
-            
+                <button type="submit" id="btn">Place Order</button>            
             </form>
         </div>
+        <!-- Order Summary -->
+        <div class="form-container" id="order-summary">
+            <h2>Order Summary</h2>
+            <p>Your order details will appear here.</p>
+        </div>
     </div>
-    <script src="js/bobaTeaOrderForm.js"></script>
+    
 </body>
 </html>
