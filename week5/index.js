@@ -1,50 +1,49 @@
-// 创建所需的常量
-const rememberDiv = document.querySelector(".remember");
-const forgetDiv = document.querySelector(".forget");
-const form = document.querySelector("form");
-const nameInput = document.querySelector("#entername");
-const submitBtn = document.querySelector("#submitname");
-const forgetBtn = document.querySelector("#forgetname");
+// Create needed constants
+const rememberDiv = document.querySelector('.remember');
+const forgetDiv = document.querySelector('.forget');
+const form = document.querySelector('form');
+const nameInput = document.querySelector('#entername');
+const submitBtn = document.querySelector('#submitname');
+const forgetBtn = document.querySelector('#forgetname');
 
-const h1 = document.querySelector("h1");
-const personalGreeting = document.querySelector(".personal-greeting");
+const h1 = document.querySelector('h1');
+const personalGreeting = document.querySelector('.personal-greeting');
 
-// 当按钮按下时阻止表单提交
+// When press the submit button, prevent the submission of the form
 form.addEventListener("submit", (e) => e.preventDefault());
 
-// 当点击“Say hello”按钮时运行函数
+// When click "say hello", run the function
 submitBtn.addEventListener("click", () => {
-  // 将输入的名字存储到网页存储中
+  // Store the name in the web browser
   localStorage.setItem("name", nameInput.value);
-  // 运行 nameDisplayCheck() 来处理显示个性化问候语和更新表单显示
+  // Run nameDisplayCheck() to display the greetings and update the form
   nameDisplayCheck();
-});
+})
 
-// 当点击“Forget”按钮时运行函数
+// When click Forget, run the function
 forgetBtn.addEventListener("click", () => {
-  // 从网页存储中移除存储的名字
+  // Remove the name from the web browser
   localStorage.removeItem("name");
-  // 运行 nameDisplayCheck() 来重新显示通用问候语并更新表单显示
+  // Run nameDisplayCheck() to display the greetings and update the form
   nameDisplayCheck();
 });
 
-// 定义 nameDisplayCheck() 函数
+// Define the nameDisplayCheck() function
 function nameDisplayCheck() {
-  // 检查 'name' 数据项是否存储在网页存储中
+  // Check if the 'name' exists in the web browser
   if (localStorage.getItem("name")) {
-    // 如果存在，显示个性化问候语
+    // If exists, display the greetings
     const name = localStorage.getItem("name");
-    h1.textContent = `欢迎，${name}`;
-    personalGreeting.textContent = `欢迎来到我们的网站，${name}！希望您在这里玩得开心。`;
-    // 隐藏表单中的 'remember' 部分，显示 'forget' 部分
+    h1.textContent = `Welcome, ${name}`;
+    personalGreeting.textContent = `Welcome to our website, ${name}! We hope you have fun while you are here.`;
+    // Hide the 'remember' part and display the 'forget' part
     forgetDiv.style.display = "block";
     rememberDiv.style.display = "none";
   } else {
-    // 如果不存在，显示通用问候语
-    h1.textContent = "欢迎来到我们的网站";
-    personalGreeting.textContent =
-      "欢迎来到我们的网站。希望您在这里玩得开心。";
-    // 隐藏表单中的 'forget' 部分，显示 'remember' 部分
+    // If not exists, display the generic greetings
+    h1.textContent = `Welcome to our website`;
+    personalGreeting.textContent = `Welcome to our website. We hope you have fun while you are here.`;
+    // Hid the 'forget' part and display the 'remember' part
     forgetDiv.style.display = "none";
     rememberDiv.style.display = "block";
   }
