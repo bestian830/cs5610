@@ -8,10 +8,11 @@ const fs = require('fs');
 // }
 // });
 
-fs.readFile("data.txt", "utf8", (err) => {
+// read the message back and log it to the console.
+fs.readFile("data.txt", "utf8", (err, data) => {
     if(err) {
         console.log("read failed");
     } else {
-        console.log("read successful");
+        console.log(data);
     }
 });
