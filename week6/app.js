@@ -28,6 +28,11 @@ app.get("/", (req,res)=> {
     res.send("Hello and welcome to my site!");
 })
 
+app.get("/tasks", (req,res)=> {
+    res.send("<h1>List all the tasks</h1>");
+    
+})
+
 port = 3000;
 
 app.listen(port, function() {
