@@ -17,6 +17,19 @@
 // });
 
 
-const logger = require("./logger.js");
-// logger.log(logger);
-logger.log();
+// const logger = require("./logger.js");
+// // logger.log(logger);
+// logger.log();
+const express = require('express');
+// console.log(express);
+const app = express();
+app.get("/", (req,res)=> {
+    // res is responsible for sending the response
+    res.send("Hello and welcome to my site!");
+})
+
+port = 3000;
+
+app.listen(port, function() {
+    console.log("Example app listening on port ${port}!");
+});
