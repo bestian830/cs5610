@@ -1,10 +1,19 @@
 // responseible for all routing related to tasks
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 
+
+// this is the handler for /tasks
 router.get("/", (req,res)=> {
-    // res is responsible for sending the response
-    res.send("Hello and welcome to my site!");
+    // send a get request to jsonplaceholder api
+    const promise = axios.get("https://jsonplaceholder.typicode.com/todos/");
+    console.log(promise);
+    promise.then((response) => {
+        res.json(response.data);
+    }).catch((error) => {
+        res.status(500).send(error.message);
+    });
 })
 
 router.get("/:taskId", (req,res)=> {
