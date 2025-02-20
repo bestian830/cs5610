@@ -28,6 +28,7 @@ app.get("/", (req,res)=> {
     res.send("Hello and welcome to my site!");
 })
 
+app.use(express.static('public'));
 app.get("/tasks/:taskId", (req,res)=> {
     console.log(req.params.taskId);
     res.send(`<p>You are viewing task ${req.params.taskId}</p>`);
