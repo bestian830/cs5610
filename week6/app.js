@@ -23,16 +23,22 @@
 const express = require('express');
 // console.log(express);
 const app = express();
+app.use(express.static("public"));
+
+const tasksRouter = require("./routes/tasks.js");
+app.use("/tasks", tasksRouter);
+
 app.get("/", (req,res)=> {
     // res is responsible for sending the response
     res.send("Hello and welcome to my site!");
 })
 
-app.use(express.static('public'));
-app.get("/tasks/:taskId", (req,res)=> {
-    console.log(req.params.taskId);
-    res.send(`<p>You are viewing task ${req.params.taskId}</p>`);
-})
+
+// mounter the router from tasks.js in this line
+// app.get("/tasks/:taskId", (req,res)=> {
+//     console.log(req.params.taskId);
+//     res.send(`<p>You are viewing task ${req.params.taskId}</p>`);
+// })
 
 port = 3000;
 
