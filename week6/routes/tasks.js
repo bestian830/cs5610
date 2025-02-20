@@ -9,7 +9,7 @@ router.get("/", (req,res)=> {
 
 router.get("/:taskId", (req,res)=> {
     console.log(req.params.taskId);
-    res.send(`<p>You are viewing task ${req.params.taskId}</p>`);
+    // res.send(`<p>You are viewing task ${req.params.taskId}</p>`);
     res.render("task", {id : req.params.taskId});
 })
 
