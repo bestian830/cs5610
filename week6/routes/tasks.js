@@ -37,7 +37,8 @@ router.get("/:taskId", async (req,res)=> {
         res.render("task", {
             id : req.params.taskId,
             title : response.data.title,
-            completed : response.data.completed});
+            completed : response.data.completed,
+            userName : response.data.userId});
     }
     catch (err) {
         res.status(500).send(err.message);
