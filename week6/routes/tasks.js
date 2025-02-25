@@ -30,14 +30,15 @@ router.get("/", async (req,res)=> {
 router.get("/:taskId", async (req,res)=> {
     try {
         const response = await axios.get(`https://jsonplaceholder.typicode.com/todos/${req.params.taskId}`);
-        res.json(response.data);
+        // res.json(response.data);
         // console.log(promise);
         // console.log(req.params.taskId);
         // res.send(`<p>You are viewing task ${req.params.taskId}</p>`);
         res.render("task", {
             id : req.params.taskId,
             title : response.data.title,
-            completed : response.data.completed});
+            completed : response.data.completed,
+            userName : response.data.userId});
     }
     catch (err) {
         res.status(500).send(err.message);

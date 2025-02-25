@@ -2,10 +2,15 @@ doctype html
 html(lang="en")
 head
   title= "Task Details"
+  link(rel="stylesheet", href="/style.css")
 body
   h1 You are viewing task #{id} using a template
-  p The tile of the task is  title
-  if completed
-    p The task is completed
-  else
-    p The task is not completed
+  
+  ul 
+    li The tile of the task is #{title}
+    li
+      if completed
+        p The task is completed
+      else
+        p The task is not completed
+    li #{userName} is responsible for this
