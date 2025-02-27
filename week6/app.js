@@ -31,6 +31,9 @@ app.set("view engine", "pug");
 app.set("views", "./views");
 app.use(express.static("public"));
 
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
 const tasksRouter = require("./routes/tasks.js");
 app.use("/tasks", tasksRouter);
 
@@ -53,5 +56,5 @@ app.listen(port, async function() {
     // connect to the database
     await db.connect();
     console.log("Connected to the database...");
-    db.addToDB({task:"Reading", user: "Alice"});
+    // db.addToDB({task:"Reading", user: "Alice"});
 });

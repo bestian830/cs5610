@@ -2,6 +2,18 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+const { addToDB } = require('../db');
+
+router.post("/", async (req,res)=> {
+    try {
+        console.log("req.body", req.body);
+        await addToDB(req.body);
+        res.send("data received");
+    }
+    catch (err) {
+        res.status(500).send(err.message);
+    }  
+});
 
 router.get("/", async (req,res)=> {
     try {
@@ -43,7 +55,6 @@ router.get("/:taskId", async (req,res)=> {
     catch (err) {
         res.status(500).send(err.message);
     }
-})
-
+});
 
 module.exports = router;    
