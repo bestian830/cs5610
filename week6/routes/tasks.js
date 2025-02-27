@@ -3,11 +3,13 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const { addToDB } = require('../db');
+// or const db = require('../db');
 
 router.post("/", async (req,res)=> {
     try {
         console.log("req.body", req.body);
         await addToDB(req.body);
+        // or await db.addToDB(req.body);
         res.send("data received");
     }
     catch (err) {
