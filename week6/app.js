@@ -20,6 +20,10 @@
 // const logger = require("./logger.js");
 // // logger.log(logger);
 // logger.log();
+const db =require("./db.js");
+console.log(db);
+require("dotenv").config();
+console.log(process.env);
 const express = require('express');
 // console.log(express);
 const app = express();
@@ -46,4 +50,6 @@ port = 3000;
 
 app.listen(port, function() {
     console.log("Example app listening on port ${port}!");
+    // connect to the database
+    console.log("Connected to the database...");
 });
