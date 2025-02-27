@@ -9,8 +9,9 @@ router.post("/", async (req,res)=> {
     try {
         console.log("req.body", req.body);
         await addToDB(req.body);
+        res.redirect("/tasks");
         // or await db.addToDB(req.body);
-        res.send("data received");
+        // res.send("data received");
     }
     catch (err) {
         res.status(500).send(err.message);
@@ -41,7 +42,14 @@ router.get("/", async (req,res)=> {
 //     });
 // })
 
+// show the form to add a  new task
+router.get("/newtask", function (req, res) {
+    res.render("taskForm");
+});
+
+
 router.get("/:taskId", async (req,res)=> {
+    console.log(req.params.taskId);
     try {
         const response = await axios.get(`https://jsonplaceholder.typicode.com/todos/${req.params.taskId}`);
         // res.json(response.data);
