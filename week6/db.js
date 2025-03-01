@@ -1,4 +1,4 @@
-const {MongoClient} = require('mongodb'); 
+const {MongoClient, ObjectId} = require('mongodb'); 
 require("dotenv").config();
 // Same with const MongoClient = require('mongodb').MongoClient;
 const url = process.env.MongoDB_URL;
@@ -22,6 +22,15 @@ module.exports = {
             return result;
         } catch (err) {
             console.error("Failed to read from database", err);
+            throw err;
+        }
+    },
+    getTaskById: async function(id) {
+        try {
+            const objId = new ObjectId(id);
+            return await client.db("cs5610").collection("tasks").findOne({_id: objId});
+        } catch (err) {
+            console.error("Failed to get task by ID", err);
             throw err;
         }
     }

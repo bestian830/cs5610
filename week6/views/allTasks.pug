@@ -1,16 +1,15 @@
 doctype html
 html(lang="en")
 head
-  title= "Task Details"
+  title= "All Tasks"
   link(rel="stylesheet", href="/style.css")
 body
   h1 All Tasks
-  
-  // each t in tasks -> traverse through the tasks array
-  each t in tasks
-    div
-      // Display the field values of each task in the database
-      p ID: #{t._id}
-      p Tasks: #{t.task}
-      p Name: #{t.user}
-      hr
+
+  ul
+    // each t in tasks -> traverse through the tasks array
+    each t in tasks
+      li 
+        // t.task is the title, superlink to /tasks/<_id>
+        a(href=`/tasks/${t._id}`)  #{t.task}
+
