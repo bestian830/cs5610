@@ -6,11 +6,8 @@ head
 body
   h1 You are viewing task #{id} using a template
   
-  ul 
-    li The tile of the task is #{title}
-    li
-      if completed
-        p The task is completed
-      else
-        p The task is not completed
-    li #{userName} is responsible for this
+  // each t in tasks -> traverse through the tasks array
+  div 
+    h2 You are viewing task #{_id}
+    p Task: #{task}
+    p Name: #{user}
