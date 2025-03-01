@@ -2,15 +2,16 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
-const { addToDB } = require('../db');
-// or const db = require('../db');
+// const { addToDB } = require('../db');
+const db = require('../db');
 
 router.post("/", async (req,res)=> {
     try {
         console.log("req.body", req.body);
-        await addToDB(req.body);
+        // await addToDB(req.body);
+        await db.addToDB(req.body);
         res.redirect("/tasks");
-        // or await db.addToDB(req.body);
+        
         // res.send("data received");
     }
     catch (err) {
@@ -18,29 +19,26 @@ router.post("/", async (req,res)=> {
     }  
 });
 
-router.get("/", async (req,res)=> {
+// router.get("/", async (req,res)=> {
+//     try {
+//         const response = await axios.get("https://jsonplaceholder.typicode.com/todos/");
+//         // console.log(response.data);
+//         res.json(response.data);
+//     } catch (err) {
+//         res.status(500).send(err.message);
+//     }
+    
+// })
+
+router.get("/", async(req,res)=> {
     try {
-        const response = await axios.get("https://jsonplaceholder.typicode.com/todos/");
-        // console.log(response.data);
-        res.json(response.data);
+        const tasks = await db.getAllTasks();
+        res.render("allTasks", {tasks});
     } catch (err) {
+        console.error("Failed to read from database", err);
         res.status(500).send(err.message);
     }
-    
-})
-
-
-// this is the handler for /tasks
-// router.get("/", (req,res)=> {
-//     // send a get request to jsonplaceholder api
-//     const promise = axios.get("https://jsonplaceholder.typicode.com/todo/");
-//     console.log(promise);
-//     promise.then((response) => {
-//         res.json(response.data);
-//     }).catch((error) => {
-//         res.status(500).send(error.message);
-//     });
-// })
+});
 
 // show the form to add a  new task
 router.get("/newtask", function (req, res) {

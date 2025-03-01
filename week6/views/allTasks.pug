@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+head
+  title= "Task Details"
+  link(rel="stylesheet", href="/style.css")
+body
+  h1 All Tasks
+  
+  // each t in tasks -> traverse through the tasks array
+  each t in tasks
+    div
+      // Display the field values of each task in the database
+      p ID: #{t._id}
+      p Tasks: #{t.task}
+      p Name: #{t.user}
+      hr

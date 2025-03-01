@@ -16,4 +16,13 @@ module.exports = {
             console.error("Failed to write to database");
        }
     }, 
+    getAllTasks: async function() {
+        try {
+            const result = await client.db("cs5610").collection("tasks").find({}).toArray();
+            return result;
+        } catch (err) {
+            console.error("Failed to read from database", err);
+            throw err;
+        }
+    }
 };
