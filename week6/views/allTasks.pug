@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+head
+  title= "All Tasks"
+  link(rel="stylesheet", href="/style.css")
+body
+  h1 All Tasks
+
+  ul
+    // each t in tasks -> traverse through the tasks array
+    each t in tasks
+      li 
+        // t.task is the title, superlink to /tasks/<_id>
+        a(href=`/tasks/${t._id}`)  #{t.task}
+
