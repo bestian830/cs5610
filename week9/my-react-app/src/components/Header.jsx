@@ -8,6 +8,7 @@ export default function Header({myAppName}) {
             <h1>
                 Welcome to {myAppName}
             </h1>
+            <button>Add A Task</button>
         </header>
     </div>
   )
