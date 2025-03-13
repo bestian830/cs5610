@@ -4,7 +4,7 @@ export default function Header({myAppName}) {
     console.log(myAppName);
   return (
     <div>
-        <header>
+        <header className='headerContainer'>
             <h1>
                 Welcome to {myAppName}
             </h1>
