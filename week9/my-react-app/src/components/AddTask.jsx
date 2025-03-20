@@ -3,8 +3,16 @@ import React, { useState } from "react";
 export default function AddTask() {
     const [title, setTitle] = useState("");
     const [date, setDate] = useState("");
+    function submitHandler(e) {
+        // e is the event object
+        e.preventDefault();
+        const newTask = { title: title, date:date };
+        console.log(newTask);
+        setTitle("");
+        setDate("");
+    }
     return (
-        <form>
+        <form onSubmit={submitHandler}>
           <div className="form-control">
 		    <label>Title</label>
             <input type="text" value={title} onChange={function (e) {setTitle(e.target.value);}} />
