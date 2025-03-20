@@ -19,13 +19,21 @@ export default function TasksList() {
     date: "June 5th at 8 am",
   }]);
 
+  function deleteTask(deletedId) {
+    // update the array
+    console.log("delete pressed from TaskList", deletedId);
+    const newArray = tasks.filter((task) => {return task.id !== deletedId});
+    setTasks(newArray);
+  }
+
 //   setTasks([]);
   console.log(tasks);
   return (
+    tasks.length === 0? <p>No tasks left</p> :
     <>
       <ul>
         {tasks.map((tasks) => {
-            return <Task key={tasks.id} task={tasks} />;
+            return <Task key={tasks.id} task={tasks} onDelete={deleteTask}/>;
         })}
       </ul>
     </>

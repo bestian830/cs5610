@@ -34,7 +34,14 @@ a:hover {
   align-items: center;
 }
 
+.task {
+  display: flex;
+  align-items: right;
+}
 
+.task-info {
+  display: flex;
+}
 
 body {
   margin: 0;
