@@ -88,3 +88,12 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.form-control {
+  margin: 20px 0;
+  display: flex;
+}
+
+.form-control label {
+  margin-right: 10px;
+}
