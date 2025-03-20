@@ -34,7 +34,14 @@ a:hover {
   align-items: center;
 }
 
+.task {
+  display: flex;
+  align-items: right;
+}
 
+.task-info {
+  display: flex;
+}
 
 body {
   margin: 0;
@@ -80,4 +87,13 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.form-control {
+  margin: 20px 0;
+  display: flex;
+}
+
+.form-control label {
+  margin-right: 10px;
 }
