@@ -1,41 +1,34 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
+import React from 'react'
 import Task from './Task'
 
-export default function TasksList() {
-    const [tasks, setTasks] = useState([
-{
-    id: 1,
-    title: "Review week 9 material",
-    date: "June 4th at 1 pm",
-  },
-  {
-    id: 2,
-    title: "Do quiz 9",
-    date: "June 4th at 6 pm",
-  },
-  {
-    id: 3,
-    title: "Work on assignment 2",
-    date: "June 5th at 8 am",
-  }]);
+export default function TasksList({tasks}) {
+ 
 
-  function deleteTask(deletedId) {
+  async function deleteTask(deletedId) {
     // update the array
     console.log("delete pressed from TaskList", deletedId);
-    const newArray = tasks.filter((task) => {return task.id !== deletedId});
-    setTasks(newArray);
+    // const newArray = tasks.filter((task) => {return task.id !== deletedId});
+    // setTasks(newArray);
+    try {
+      await fetch('http://localhost:5001/todos/' + deletedId, {
+        method: 'DELETE'
+      });
+    }
+    catch (err) {
+      console.log("deleteTask", err);
+    }
   }
 
 //   setTasks([]);
   console.log(tasks);
-  return (
-    tasks.length === 0? <p>No tasks left</p> :
-    <>
+  return tasks.length === 0? (
+    <p>No tasks left</p>
+  ):(
       <ul>
         {tasks.map((tasks) => {
             return <Task key={tasks.id} task={tasks} onDelete={deleteTask}/>;
         })}
       </ul>
-    </>
-  )
+  );
 }

@@ -10,6 +10,17 @@ export default function AddTask() {
         console.log(newTask);
         setTitle("");
         setDate("");
+        try {
+            fetch("http://localhost:5001/todos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newTask),
+            });
+        } catch (err) {
+            console.log("submitHandler", err);
+        }
     }
     return (
         <form onSubmit={submitHandler}>
@@ -24,4 +35,4 @@ export default function AddTask() {
 	        <button type="submit"> Save </button>
         </form>
     );
-    }
+}
