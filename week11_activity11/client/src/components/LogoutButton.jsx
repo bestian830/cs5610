@@ -14,7 +14,6 @@ const LogoutButton = () => {
           returnTo: window.location.origin
         }
       })}
-      className="btn btn-danger"
     >
       登出
     </button>

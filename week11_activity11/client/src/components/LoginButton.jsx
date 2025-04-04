@@ -8,7 +8,6 @@ const LoginButton = () => {
     return (
         <button
             onClick={() => loginWithRedirect()}
-            className="btn btn-primary"
         >
             Log in
         </button>

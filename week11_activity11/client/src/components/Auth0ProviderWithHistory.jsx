@@ -18,18 +18,18 @@ const Auth0ProviderWithHistory = ({ children }) => {
 
   // Auth0Provider组件包装整个应用,提供认证上下文
   return (
-    <Auth0Provider
-      domain={domain}
-      clientId={clientId}
-      authorizationParams={{
-        // 重定向URL(登陆成功后返回的地址)
-        redirect_uri: window.location.origin,
-      }}
-      onRedirectCallback={onRedirectCallback}
-    >
-      {children}
-    </Auth0Provider>
+  <Auth0Provider
+    domain={domain}
+    clientId={clientId}
+    authorizationParams={{
+      redirect_uri: window.location.origin,
+      audience: import.meta.env.VITE_AUTH0_AUDIENCE  // 添加这行
+    }}
+    onRedirectCallback={onRedirectCallback}
+  >
+    {children}
+  </Auth0Provider>
   );
-};
+}
 
 export default Auth0ProviderWithHistory;
